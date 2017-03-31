@@ -1,3 +1,4 @@
 require_relative '../config/environment.rb'
 
-adapter = Adapter.new
+deactivate = DeactivationService.new
+deactivate.bulk_deactivation('test_deactivate.xlsx')
