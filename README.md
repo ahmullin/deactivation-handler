@@ -9,4 +9,3 @@
 ### PODIO_CLIENT_SECRET
 ### PODIO_USERNAME
 ### PODIO_PW
-# deactivation-handler
