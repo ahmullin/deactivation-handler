@@ -65,7 +65,6 @@ class Adapter
 
   def update_field(item_id, field_id, new_value)
     # Podio::ItemField.update( item_id, field_id, new_value )
-    # binding.pry
   end
 
 
