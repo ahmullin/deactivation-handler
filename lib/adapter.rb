@@ -10,8 +10,8 @@ class Adapter
     secret = "PODIO_CLIENT_SECRET"
     username = "PODIO_USERNAME"
     pw = "PODIO_PW"
-    client = Podio.setup(:api_key => ENV[id], :api_secret => ENV[secret])
-    authenticate = Podio.client.authenticate_with_credentials(ENV[username], ENV[pw])
+    Podio.setup(:api_key => ENV[id], :api_secret => ENV[secret])
+    Podio.client.authenticate_with_credentials(ENV[username], ENV[pw])
   end
 
   def get_field_id(field_name)
@@ -62,7 +62,6 @@ class Adapter
   def find_item(item_id)
     Podio::Item.find(item_id)
   end
-
 
   def update_field(item_id, field_id, new_value)
     # Podio::ItemField.update( item_id, field_id, new_value )

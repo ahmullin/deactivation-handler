@@ -7,6 +7,5 @@
 ### Make sure you have the following variables
 ### PODIO_CLIENT_ID
 ### PODIO_CLIENT_SECRET
-### PODIO_USERNAME
+### PODIO_USERNAME (cannot be the AI admin account)
 ### PODIO_PW
-# deactivation-handler
