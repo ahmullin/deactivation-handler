@@ -1,11 +1,7 @@
 require_relative '../config/environment.rb'
 
-test_file = 'test_deactivation_staff_march_2017_for_handler.xlsx'
-production_file = 'deactivation_staff_march_2017_for_handler.xlsx'
+test_file = 'test_deactivation_senate_staff_q2_2018_for_handler.xlsx'
+production_file = 'deactivation_senate_staff_q2_2018_for_handler.xlsx'
 
 deactivate = DeactivationService.new
-deactivate.bulk_deactivation(production_file, 'to_clean_inactive_people', 59)
-deactivate.bulk_deactivation(production_file, 'to_deactivate_sen_staff', 59)
-deactivate.bulk_deactivation(production_file, 'to_deactivate_assem_staff', 59)
-
-deactivate.bulk_deactivation(production_file, 'to_deactivate_council_staff', 59)
+deactivate.bulk_deactivation(production_file, 'to_deactivate_senate_staff', 1)

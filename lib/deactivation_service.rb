@@ -4,7 +4,7 @@ class DeactivationService
     # /// read IDs from excel spreadsheet ///
 
     def export_ids(excel_file, worksheet_name, column_number)
-        xlsx = Roo::Spreadsheet.open("public/data/#{excel_file}")
+        xlsx = Roo::Spreadsheet.open("public/data/Q2_2018/#{excel_file}")
         item_ids = xlsx.sheet(worksheet_name).column(column_number).compact
         item_ids.delete_at(0)
         item_ids.delete(' ')
@@ -14,9 +14,15 @@ class DeactivationService
     # /// returns array of fields names that need to be updated ///
 
     def fields_to_update
-        [
-            'Previous Roles in Government', 'Reports to Person', 'Works for Group', 'Personal Staff Office', 'Email', 'Email 2', 'Phone 1 / District Office', 'Phone 2 / Capitol or Legislative Office', 'Phone 3 / Other', 'Fax 1 / District Office', 'Fax 2 / Capital or Legislative Office', 'Address 1 / District Office', 'Address 2 / Capitol or Legislative Office', 'Address 3 / Other', 'Reason', 'Government Body', 'Legislative Staff Type', 'Personal Staff Responsibility', 'Active', 'Title'
-        ]
+        # [
+        #     'Previous Roles in Government', 'Reports to Person', 'Works for Group', 'Personal Staff Office', 'Email', 'Email 2', 'Phone 1 / District Office', 'Phone 2 / Capitol or Legislative Office', 'Phone 3 / Other', 'Fax 1 / District Office', 'Fax 2 / Capital or Legislative Office', 'Address 1 / District Office', 'Address 2 / Capitol or Legislative Office', 'Address 3 / Other', 'Legislative Staff Type', 'Personal Staff Responsibility', 'Title'
+        # ]
+
+        # [
+        #     'Previous Roles in Government', 'Reports to Person', 'Works for Group', 'Personal Staff Office', 'Email', 'Email 2', 'Phone 1 / District Office', 'Phone 2 / Capitol or Legislative Office', 'Phone 3 / Other', 'Fax 1 / District Office', 'Fax 2 / Capital or Legislative Office', 'Address 1 / District Office', 'Address 2 / Capitol or Legislative Office', 'Address 3 / Other', 'Reason', 'Government Body', 'Legislative Staff Type', 'Personal Staff Responsibility', 'Active', 'Title'
+        # ]
+
+        [ 'Reason', 'Government Body', 'Active' ]
     end
 
     #  /// helper methods to get current values of certain fields in the Podio item ///
@@ -54,7 +60,6 @@ class DeactivationService
     # /// the method that is called from bin/run that calls on helper methods to deactivate a list of people in Podio ///
 
     def bulk_deactivation(excel_file, worksheet_name, column_number)
-      binding.pry
         client = Adapter.new
         field_titles = fields_to_update
         item_ids = export_ids(excel_file, worksheet_name, column_number)
@@ -74,7 +79,7 @@ class DeactivationService
                     field_title['label'] == field_to_update
                 end
                 if field_to_update == 'Previous Roles in Government' && field.nil?
-                    new_previous_roles_field_value = "<p>Previously#{title_value}#{works_for_value}#{reports_to_value}. Set inactive on#{date}.<p>"
+                    new_previous_roles_field_value = "<p>Previously#{title_value}#{works_for_value}#{reports_to_value}. Set inactive on #{date}.<p>"
                     client.update_field(item_id, field_id, [new_previous_roles_field_value])
                 elsif field_to_update == 'Previous Roles in Government' && !field.nil? && (works_for_value || reports_to_value)
                     previous_roles_field_value = field.values[4][0]['value']
