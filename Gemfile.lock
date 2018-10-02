@@ -35,7 +35,7 @@ GEM
     rb-readline (0.5.5)
     roo (2.4.0)
       nokogiri (~> 1)
-      rubyzip (~> 1.1, < 2.0.0)
+      rubyzip (~> 1.2.2, < 2.0.0)
     rubyzip (1.2.1)
     slop (3.6.0)
     thread_safe (0.3.6)
