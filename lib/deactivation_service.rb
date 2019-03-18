@@ -15,12 +15,12 @@ class DeactivationService
 
     def fields_to_update
       # first set of fields
-        [
-            'Previous Roles in Government', 'Reports to Person', 'Works for Group', 'Personal Staff Office', 'Email', 'Email 2', 'Phone 1 / District Office', 'Phone 2 / Capitol or Legislative Office', 'Phone 3 / Other', 'Fax 1 / District Office', 'Fax 2 / Capital or Legislative Office', 'Address 1 / District Office', 'Address 2 / Capitol or Legislative Office', 'Address 3 / Other', 'Legislative Staff Type', 'Personal Staff Responsibility', 'Title'
-        ]
+        # [
+        #     'Previous Roles in Government', 'Reports to Person', 'Works for Group', 'Personal Staff Office', 'Email', 'Email 2', 'Phone 1 / District Office', 'Phone 2 / Capitol or Legislative Office', 'Phone 3 / Other', 'Fax 1 / District Office', 'Fax 2 / Capital or Legislative Office', 'Address 1 / District Office', 'Address 2 / Capitol or Legislative Office', 'Address 3 / Other', 'Legislative Staff Type', 'Personal Staff Responsibility', 'Title'
+        # ]
 
       # second set of fields and first have finished, to ensure relationship consistency
-        # [ 'Reason', 'Government Body', 'Active' ]
+        [ 'Reason', 'Government Body', 'Active' ]
     end
 
     #  helper methods to get current values of certain fields in the Podio item
