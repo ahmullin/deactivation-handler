@@ -11,18 +11,6 @@ class DeactivationService
         item_ids
     end
 
-    # returns array of fields names that need to be updated
-
-    def fields_to_update
-      # first set of fields
-        # [
-        #     'Previous Roles in Government', 'Reports to Person', 'Works for Group', 'Personal Staff Office', 'Email', 'Email 2', 'Phone 1 / District Office', 'Phone 2 / Capitol or Legislative Office', 'Phone 3 / Other', 'Fax 1 / District Office', 'Fax 2 / Capital or Legislative Office', 'Address 1 / District Office', 'Address 2 / Capitol or Legislative Office', 'Address 3 / Other', 'Legislative Staff Type', 'Personal Staff Responsibility', 'Title'
-        # ]
-
-      # second set of fields and first have finished, to ensure relationship consistency
-        [ 'Reason', 'Government Body', 'Active' ]
-    end
-
     #  helper methods to get current values of certain fields in the Podio item
 
     def person_title_value(fields)
@@ -57,9 +45,9 @@ class DeactivationService
 
     # the method that is called from bin/run that calls on helper methods to deactivate a list of people in Podio
 
-    def bulk_deactivation(excel_file, worksheet_name, column_number)
+    def bulk_deactivation(excel_file, worksheet_name, column_number, field_set)
         client = Adapter.new
-        field_titles = fields_to_update
+        field_titles = field_set
         item_ids = export_ids(excel_file, worksheet_name, column_number)
 
         item_ids.each_with_index do |item_id, index|
