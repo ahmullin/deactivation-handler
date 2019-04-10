@@ -43,7 +43,7 @@ class DeactivationService
         puts "Item #{item_id} has been updated / #{rounded}% of items have been deactivated.".colorize(:green)
     end
 
-    # the method that is called from bin/run that calls on helper methods to deactivate a list of people in Podio
+    # the method that is called from bin files that calls on helper methods to deactivate a list of people in Podio
 
     def bulk_deactivation(excel_file, worksheet_name, column_number, field_set)
         client = Adapter.new
